@@ -20,5 +20,35 @@ Output: -1
 Explanation:
 There is no index that satisfies the conditions in the problem statement.
 """
+
+# O(n^2)
 def pivot_index(nums):
-    # Your code here
+    # loop through nums
+    # we need the index
+    for i in range(len(nums)): # O(n)
+        l_sum = sum(nums[0:i]) # O(n)
+        r_sum = sum(nums[i+1:])
+        if l_sum == r_sum:
+            return i
+
+    return -1
+
+# O(n)
+# def pivot_index(nums):
+#     # loop through nums
+#     # we need the index
+#     l_sum = 0
+#     r_sum = sum(nums)
+#     for i in range(len(nums)):
+#         # Remove current value from r_sum
+#         r_sum -= nums[i]
+#         if i != 0:
+#             l_sum += nums[i-1]
+
+#         if l_sum == r_sum:
+#             return i
+
+#     return -1
+
+print(pivot_index([1,7,3,6,5,6])) # 3
+print(pivot_index([1,2,3])) # -1
